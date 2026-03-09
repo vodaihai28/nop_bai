@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova – Products</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <!-- Nền trang trang trí -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+    <!-- ============================================================
+     HEADER
+============================================================ -->
+    <header id="header">
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            Tech<span>Nova</span>
+        </div>
+
+        <!-- Thanh tìm kiếm -->
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm iPhone, Laptop, Tai nghe..." />
+            <i class="fas fa-microphone" style="cursor:pointer;color:var(--text-muted)"></i>
+        </div>
+
+        <!-- Nav links -->
+        <nav id="navMenu">
+            <a href="index.html">Trang chủ</a>
+            <a href="products.html" class="active">Sản phẩm</a>
+            <!-- <a href="#brands">Thương hiệu</a> -->
+            <!-- <a href="#promo">Flash Sale</a> -->
+        </nav>
+
+        <!-- Biểu tượng -->
+        <div class="header-icons">
+            <button class="icon-btn" id="cartBtn" title="Giỏ hàng">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+            <a href="login.html">
+                <button class="icon-btn" title="Tài khoản">
+                    <i class="fas fa-user-circle"></i>
+                    <div class="userInfo icon-btn" id='userInfo'></div>
+                </button>
+            </a>
+            <button class="icon-btn" title="Đăng xuất" id="logoutBtn">
+                <div class="btn-log-out">Đăng xuất</div>
+            </button>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+    <!-- ============================================================
+     DANH MỤC NỔI BẬT
+============================================================ -->
+    <section class="section" id="categories">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag"><i class="fas fa-layer-group"></i> Danh mục</div>
+                <h2 class="section-title">Khám phá <span class="accent-text">theo loại</span></h2>
+            </div>
+            <div class="categories-grid" id="categoriesGrid" data-aos="fade-up" data-aos-delay="100">
+                <!-- Được render bởi JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+     SẢN PHẨM NỔI BẬT
+============================================================ -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag"><i class="fas fa-fire"></i> Sản phẩm</div>
+                <h2 class="section-title">Sản phẩm <span class="accent-text">nổi bật</span></h2>
+            </div>
+
+            <!-- Bộ lọc -->
+            <div class="filter-bar" data-aos="fade-up" data-aos-delay="50">
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-tags"></i> Thương hiệu</span>
+                    <select class="filter-select" id="filterBrand">
+                        <option value="">Tất cả thương hiệu</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Sony">Sony</option>
+                        <option value="Dell">Dell</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-th-large"></i> Loại sản phẩm</span>
+                    <select class="filter-select" id="filterCategory">
+                        <option value="">Tất cả loại</option>
+                        <option value="phone">Điện thoại</option>
+                        <option value="laptop">Laptop</option>
+                        <option value="watch">Đồng hồ</option>
+                        <option value="headphone">Tai nghe</option>
+                        <option value="tablet">Tablet</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-dollar-sign"></i> Giá từ (₫)</span>
+                    <div class="price-range">
+                        <input type="number" class="price-input" id="priceMin" placeholder="0" min="0" />
+                        <span>–</span>
+                        <input type="number" class="price-input" id="priceMax" placeholder="50.000.000" min="0" />
+                    </div>
+                </div>
+                <button class="btn-filter" id="btnFilter"><i class="fas fa-filter"></i> Lọc</button>
+                <button class="btn-reset" id="btnReset"><i class="fas fa-redo"></i> Xóa lọc</button>
+            </div>
+
+            <!-- Lưới sản phẩm -->
+            <div class="products-grid" id="productsGrid" data-aos="fade-up" data-aos-delay="100">
+                <!-- Được render bởi JS -->
+            </div>
+            <p id="noProducts" class="hidden text-center mt-3" style="color:var(--text-muted)">
+                <i class="fas fa-search" style="font-size:2rem;display:block;margin-bottom:0.5rem;"></i>
+                Không tìm thấy sản phẩm phù hợp.
+            </p>
+        </div>
+    </section>
+    <!-- ============================================================
+     THƯƠNG HIỆU
+============================================================ -->
+    <section class="section" id="brands">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <div class="section-tag"><i class="fas fa-star"></i> Thương hiệu</div>
+                <h2 class="section-title">Chính hãng <span class="accent-text">100%</span></h2>
+            </div>
+            <div class="brands-row" data-aos="fade-up" data-aos-delay="100">
+                <div class="brand-pill active" onclick="filterByBrand('Apple')"><i class="fab fa-apple"></i> Apple</div>
+                <div class="brand-pill" onclick="filterByBrand('Samsung')"><i class="fas fa-mobile-alt"></i> Samsung
+                </div>
+                <div class="brand-pill" onclick="filterByBrand('Sony')"><i class="fas fa-headphones"></i> Sony</div>
+                <div class="brand-pill" onclick="filterByBrand('Dell')"><i class="fas fa-laptop"></i> Dell</div>
+                <div class="brand-pill" onclick="filterByBrand('Xiaomi')"><i class="fas fa-tablet-alt"></i> Xiaomi</div>
+                <div class="brand-pill" onclick="filterByBrand('')"><i class="fas fa-th"></i> Tất cả</div>
+            </div>
+        </div>
+    </section>
+    <!-- ============================================================
+     GIỎ HÀNG SIDEBAR
+============================================================ -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart" style="color:var(--accent);margin-right:0.5rem"></i>Giỏ hàng</h2>
+            <button class="btn-close-cart" onclick="closeCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Render bởi JS -->
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total-row">
+                <span class="total-lbl">Tổng cộng:</span>
+                <span class="total-val" id="cartTotal">0 ₫</span>
+            </div>
+            <button class="btn-primary btn-checkout" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> Thanh toán ngay
+            </button>
+        </div>
+    </div>
+    <!-- ============================================================
+     TOAST
+============================================================ -->
+    <div class="toast-container" id="toastContainer"></div>
+        <!-- ============================================================
+     FOOTER
+============================================================ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                        Tech<span>Nova</span>
+                    </div>
+                    <p class="footer-desc">Cửa hàng công nghệ hàng đầu Việt Nam. Chuyên cung cấp các sản phẩm điện tử
+                        chính hãng, giá tốt, bảo hành uy tín.</p>
+                    <div class="social-links">
+                        <a class="social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-btn" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="social-btn" href="#"><i class="fab fa-tiktok"></i></a>
+                        <a class="social-btn" href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Sản phẩm</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Điện thoại</a></li>
+                        <li><a href="#">Laptop</a></li>
+                        <li><a href="#">Tai nghe</a></li>
+                        <li><a href="#">Đồng hồ thông minh</a></li>
+                        <li><a href="#">Tablet</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-phone" style="width:16px"></i> 1800 123 456</a></li>
+                        <li><a href="#"><i class="fas fa-envelope" style="width:16px"></i> support@technova.vn</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Bảo hành</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nhận ưu đãi</h4>
+                    <p class="newsletter-desc">Đăng ký nhận thông báo flash sale và ưu đãi độc quyền.</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Email của bạn..." />
+                        <button class="newsletter-btn" onclick="subscribeNewsletter()"><i
+                                class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2025 TechNova. Bảo lưu mọi quyền.</div>
+                <div class="footer-pay">
+                    <div class="pay-icon">VISA</div>
+                    <div class="pay-icon">MasterCard</div>
+                    <div class="pay-icon">MoMo</div>
+                    <div class="pay-icon">ZaloPay</div>
+                    <div class="pay-icon">COD</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="./products.js"></script>
+</body>
+
+</html>
